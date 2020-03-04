@@ -1,0 +1,11 @@
+matematisk formel för primtal
+sätta upp ett console-projekt med tillhörande testprojekt
+Användarinstruktioner och nödvändiga variabler
+metod för primtal
+test -> kontrollera att det är primtal 
+test -> lägg till i array och kolla att det stämmer
+test -> lägg till nästa primtal -> implementation
+test -> skriv ut array
+test -> tom lista
+test -> kommandon
+test -> tar verkligen högsta?
