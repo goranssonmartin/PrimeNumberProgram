@@ -6,10 +6,11 @@ namespace PrimeNumberLibrary
 {
     public class PrimeNumberChecker
     {
-        public static List<int> listOfPrimeNumbers = new List<int>();
+        static List<int> listOfPrimeNumbers = new List<int>();
 
         public static int ConsoleHandler(string input)
         {
+            input = input.ToLower();
             if (input == "stop")
             {
                 return 1;

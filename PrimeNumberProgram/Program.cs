@@ -38,7 +38,7 @@ namespace PrimeNumberProgram
 
                 else if (PrimeNumberChecker.ConsoleHandler(input) == 3)
                 {
-                    if (PrimeNumberChecker.listOfPrimeNumbers.Count() > 0)
+                    if (PrimeNumberChecker.ReturnListOfStoredPrimeNumbers().Count() > 0)
                     {
                         int nextPrimeNumber = PrimeNumberChecker.FindNextPrimeNumber(PrimeNumberChecker.ReturnListOfStoredPrimeNumbers().Max());
                         PrimeNumberChecker.AddToList(nextPrimeNumber);
