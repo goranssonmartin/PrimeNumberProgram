@@ -8,7 +8,7 @@ namespace PrimeNumberLibrary
     {
         static List<int> listOfPrimeNumbers = new List<int>();
 
-        public static int ConsoleHandler(string input)
+        public static int InputHandler(string input)
         {
             input = input.ToLower();
             if (input == "stop")
@@ -37,7 +37,7 @@ namespace PrimeNumberLibrary
             }
         }
 
-        public static bool HandleInputNumber(int inputNumber)
+        public static bool inputNumberHandler(int inputNumber)
         {
             if (inputNumber <= 1)
             {
@@ -61,21 +61,21 @@ namespace PrimeNumberLibrary
 
             return true;
         }
-        public static string AddToList(int intInput)
+        public static string AddToList(int potentialPrimeNumber)
         {
-            if (!listOfPrimeNumbers.Contains(intInput) && HandleInputNumber(intInput))
+            if (!listOfPrimeNumbers.Contains(potentialPrimeNumber) && inputNumberHandler(potentialPrimeNumber))
             {
-                listOfPrimeNumbers.Add(intInput);
+                listOfPrimeNumbers.Add(potentialPrimeNumber);
                 SortList();
-                return intInput + " added as a prime number\n";
+                return potentialPrimeNumber + " added as a prime number\n";
             }
-            else if (listOfPrimeNumbers.Contains(intInput) && HandleInputNumber(intInput))
+            else if (listOfPrimeNumbers.Contains(potentialPrimeNumber) && inputNumberHandler(potentialPrimeNumber))
             {
-                return intInput + " is a prime number, but is already stored";
+                return potentialPrimeNumber + " is a prime number, but is already stored";
             }
             else
             {
-                return intInput + " is not a prime number\n";
+                return potentialPrimeNumber + " is not a prime number\n";
             }
         }
 
@@ -108,7 +108,7 @@ namespace PrimeNumberLibrary
         public static int FindNextPrimeNumber(int highestStoredNumber)
         {
             highestStoredNumber++;
-            if (HandleInputNumber(highestStoredNumber))
+            if (inputNumberHandler(highestStoredNumber))
             {
                 return highestStoredNumber;
             }

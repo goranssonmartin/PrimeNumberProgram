@@ -16,12 +16,12 @@ namespace PrimeNumberProgram
             {
                 var input = Console.ReadLine();
 
-                if (PrimeNumberChecker.ConsoleHandler(input) == 1)
+                if (PrimeNumberChecker.InputHandler(input) == 1)
                 {
                     loopBoolean = false;
                 }
 
-                else if (PrimeNumberChecker.ConsoleHandler(input) == 2)
+                else if (PrimeNumberChecker.InputHandler(input) == 2)
                 {
                     if (PrimeNumberChecker.ReturnListOfStoredPrimeNumbers().Count > 0)
                     {
@@ -37,7 +37,7 @@ namespace PrimeNumberProgram
                     }
                 }
 
-                else if (PrimeNumberChecker.ConsoleHandler(input) == 3)
+                else if (PrimeNumberChecker.InputHandler(input) == 3)
                 {
                     if (PrimeNumberChecker.ReturnListOfStoredPrimeNumbers().Count() > 0)
                     {
@@ -51,13 +51,13 @@ namespace PrimeNumberProgram
                     }
                 }
 
-                else if (PrimeNumberChecker.ConsoleHandler(input) == 4)
+                else if (PrimeNumberChecker.InputHandler(input) == 4)
                 {
                     PrimeNumberChecker.ClearList();
                     Console.WriteLine("Cleared the list of stored prime numbers\n");
                 }
 
-                else if (PrimeNumberChecker.ConsoleHandler(input) == 5)
+                else if (PrimeNumberChecker.InputHandler(input) == 5)
                 {
                     Console.WriteLine(PrimeNumberChecker.AddToList(int.Parse(input)));
                 }
