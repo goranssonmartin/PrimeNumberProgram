@@ -6,7 +6,7 @@ namespace PrimeNumberLibrary
 {
     public class PrimeNumberChecker
     {
-        static List<int> listOfPrimeNumbers = new List<int>();
+        private static List<int> listOfPrimeNumbers = new List<int>();
 
         public static int InputHandler(string input)
         {
