@@ -44,20 +44,14 @@ namespace PrimeNumberTesting
         }
 
         [Test]
-        public void Test_IfPrimeNumberReturnsTrue()
+        public void Test_IfPrimeNumberReturnsCorrectValue()
         {
             Assert.AreEqual(true, PrimeNumberChecker.HandleInputNumber(2));
             Assert.AreEqual(true, PrimeNumberChecker.HandleInputNumber(5));
             Assert.AreEqual(true, PrimeNumberChecker.HandleInputNumber(11));
             Assert.AreEqual(false, PrimeNumberChecker.HandleInputNumber(1234567));
-        }
-
-        [Test]
-        public void Test_IfNonPrimeNumberReturnsFalse()
-        {
-            Assert.AreEqual(false, PrimeNumberChecker.HandleInputNumber(1));
             Assert.AreEqual(false, PrimeNumberChecker.HandleInputNumber(4));
-            Assert.AreEqual(false, PrimeNumberChecker.HandleInputNumber(321));
+            Assert.AreEqual(false, PrimeNumberChecker.HandleInputNumber(21));
         }
 
         [Test]
