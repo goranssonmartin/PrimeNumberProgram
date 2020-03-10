@@ -23,13 +23,17 @@ namespace PrimeNumberLibrary
             {
                 return 3;
             }
-            else if (int.TryParse(input, out int result))
+            else if (input == "clear")
             {
                 return 4;
             }
-            else
+            else if (int.TryParse(input, out int result))
             {
                 return 5;
+            }
+            else
+            {
+                return 6;
             }
         }
 
@@ -57,21 +61,48 @@ namespace PrimeNumberLibrary
 
             return true;
         }
-        public static string AddToList(int intInput) {
+        public static string AddToList(int intInput)
+        {
             if (!listOfPrimeNumbers.Contains(intInput) && HandleInputNumber(intInput))
             {
                 listOfPrimeNumbers.Add(intInput);
+                SortList();
                 return intInput + " added as a prime number\n";
             }
-            else if (listOfPrimeNumbers.Contains(intInput) && HandleInputNumber(intInput)) {
+            else if (listOfPrimeNumbers.Contains(intInput) && HandleInputNumber(intInput))
+            {
                 return intInput + " is a prime number, but is already stored";
             }
-            else {
+            else
+            {
                 return intInput + " is not a prime number\n";
             }
         }
 
-        public static List<int> ReturnListOfStoredPrimeNumbers() {
+        public static void SortList()
+        {
+            if (listOfPrimeNumbers.Count() > 1)
+            {
+                for (int i = listOfPrimeNumbers.Count() - 1; i >= 0; i--)
+                {
+                    if (i > 0 && listOfPrimeNumbers[i] < listOfPrimeNumbers[i - 1])
+                    {
+                        int temp = listOfPrimeNumbers[i - 1];
+                        listOfPrimeNumbers[i - 1] = listOfPrimeNumbers[i];
+                        listOfPrimeNumbers[i] = temp;
+                    }
+
+                }
+            }
+        }
+
+        public static void ClearList()
+        {
+            listOfPrimeNumbers = new List<int>();
+        }
+
+        public static List<int> ReturnListOfStoredPrimeNumbers()
+        {
             return listOfPrimeNumbers;
         }
         public static int FindNextPrimeNumber(int highestStoredNumber)

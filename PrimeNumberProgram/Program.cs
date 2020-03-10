@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using PrimeNumberLibrary;
 
@@ -10,8 +9,9 @@ namespace PrimeNumberProgram
         static void Main(string[] args)
         {
             bool loopBoolean = true;
-            Console.WriteLine(@"Type a number to check if it's a prime number, ""stop"" to quit, ""print"" to print all the added numbers");
-            Console.WriteLine("or \"next\" to add the next prime number based on the stored ones\n");
+            Console.WriteLine("Type a number to check if it's a prime number, \"stop\" to quit, \"print\" to print all the added numbers,");
+            Console.WriteLine("\"next\" to add the next prime number based on the stored ones");
+            Console.WriteLine("or \"clear\" to clear the list of prime numbers\n");
             while (loopBoolean)
             {
                 var input = Console.ReadLine();
@@ -31,8 +31,9 @@ namespace PrimeNumberProgram
                         }
                         Console.WriteLine("");
                     }
-                    else {
-                        Console.WriteLine("No stored numbers to print");
+                    else
+                    {
+                        Console.WriteLine("No stored numbers to print\n");
                     }
                 }
 
@@ -40,17 +41,23 @@ namespace PrimeNumberProgram
                 {
                     if (PrimeNumberChecker.ReturnListOfStoredPrimeNumbers().Count() > 0)
                     {
-                        int nextPrimeNumber = PrimeNumberChecker.FindNextPrimeNumber(PrimeNumberChecker.ReturnListOfStoredPrimeNumbers().Max());
+                        int nextPrimeNumber = PrimeNumberChecker.FindNextPrimeNumber(PrimeNumberChecker.ReturnListOfStoredPrimeNumbers()[PrimeNumberChecker.ReturnListOfStoredPrimeNumbers().Count() - 1]);
                         PrimeNumberChecker.AddToList(nextPrimeNumber);
                         Console.WriteLine(nextPrimeNumber + " added as the next prime number\n");
                     }
                     else
                     {
-                        Console.WriteLine("No saved prime numbers to compare\n");
+                        Console.WriteLine("No stored prime numbers to compare\n");
                     }
                 }
 
                 else if (PrimeNumberChecker.ConsoleHandler(input) == 4)
+                {
+                    PrimeNumberChecker.ClearList();
+                    Console.WriteLine("Cleared the list of stored prime numbers\n");
+                }
+
+                else if (PrimeNumberChecker.ConsoleHandler(input) == 5)
                 {
                     Console.WriteLine(PrimeNumberChecker.AddToList(int.Parse(input)));
                 }
@@ -60,9 +67,6 @@ namespace PrimeNumberProgram
                     Console.WriteLine("\"" + input + "\" is not a proper command or a number\n");
                 }
             }
-
         }
-
-
     }
 }

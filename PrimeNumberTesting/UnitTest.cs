@@ -10,31 +10,37 @@ namespace PrimeNumberTesting
         [Test]
         public void Test_IfStopInputReturns1()
         {
-            Assert.AreEqual(1, PrimeNumberChecker.ConsoleHandler("stop"));
+            Assert.AreEqual(1, PrimeNumberChecker.ConsoleHandler("StoP"));
         }
 
         [Test]
         public void Test_IfPrintInputReturns2()
         {
-            Assert.AreEqual(2, PrimeNumberChecker.ConsoleHandler("print"));
+            Assert.AreEqual(2, PrimeNumberChecker.ConsoleHandler("priNT"));
         }
 
         [Test]
         public void Test_IfNextInputReturns3()
         {
-            Assert.AreEqual(3, PrimeNumberChecker.ConsoleHandler("next"));
+            Assert.AreEqual(3, PrimeNumberChecker.ConsoleHandler("nEXt"));
         }
 
         [Test]
-        public void Test_IfANumberInputReturns4()
+        public void Test_IfAClearInputReturns4()
         {
-            Assert.AreEqual(4, PrimeNumberChecker.ConsoleHandler("21"));
+            Assert.AreEqual(4, PrimeNumberChecker.ConsoleHandler("clEAr"));
         }
 
         [Test]
-        public void Test_IfInvalidInputReturns5()
+        public void Test_IfANumberInputReturns5()
         {
-            Assert.AreEqual(5, PrimeNumberChecker.ConsoleHandler("katt"));
+            Assert.AreEqual(5, PrimeNumberChecker.ConsoleHandler("21"));
+        }
+
+        [Test]
+        public void Test_IfInvalidInputReturns6()
+        {
+            Assert.AreEqual(6, PrimeNumberChecker.ConsoleHandler("katt"));
         }
 
         [Test]
@@ -43,6 +49,7 @@ namespace PrimeNumberTesting
             Assert.AreEqual(true, PrimeNumberChecker.HandleInputNumber(2));
             Assert.AreEqual(true, PrimeNumberChecker.HandleInputNumber(5));
             Assert.AreEqual(true, PrimeNumberChecker.HandleInputNumber(11));
+            Assert.AreEqual(false, PrimeNumberChecker.HandleInputNumber(1234567));
         }
 
         [Test]
@@ -54,7 +61,6 @@ namespace PrimeNumberTesting
         }
 
         [Test]
-        //whut du heck
         public void Test_IfAddingMultipleNumbersCreatesExpectedList()
         {
             List<int> expectedList = new List<int>();
@@ -75,10 +81,8 @@ namespace PrimeNumberTesting
         public void Test_IfNextIsWorkingAsIntended()
         {
             PrimeNumberChecker.AddToList(11);
-            Assert.AreEqual(13, PrimeNumberChecker.FindNextPrimeNumber(PrimeNumberChecker.ReturnListOfStoredPrimeNumbers().Max()));
+            int highestStoredValue = PrimeNumberChecker.ReturnListOfStoredPrimeNumbers()[PrimeNumberChecker.ReturnListOfStoredPrimeNumbers().Count() - 1];
+            Assert.AreEqual(13, PrimeNumberChecker.FindNextPrimeNumber(highestStoredValue));
         }
-
-
-
     }
 }
