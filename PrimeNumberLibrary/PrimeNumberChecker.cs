@@ -7,33 +7,55 @@ namespace PrimeNumberLibrary
     public class PrimeNumberChecker
     {
         private static List<int> listOfPrimeNumbers = new List<int>();
+        public static bool loopBoolean = true;
 
-        public static int InputHandler(string input)
+        public static void InputHandler(string input)
         {
             input = input.ToLower();
             if (input == "stop")
             {
-                return 1;
+                loopBoolean = false;
             }
             else if (input == "print")
             {
-                return 2;
+                if (ReturnListOfStoredPrimeNumbers().Count > 0)
+                {
+                    foreach (var storedNumbers in ReturnListOfStoredPrimeNumbers())
+                    {
+                        Console.WriteLine(storedNumbers);
+                    }
+                    Console.WriteLine("");
+                }
+                else
+                {
+                    Console.WriteLine("No stored numbers to print\n");
+                }
             }
             else if (input == "next")
             {
-                return 3;
+                if (ReturnListOfStoredPrimeNumbers().Count() > 0)
+                {
+                    int nextPrimeNumber = FindNextPrimeNumber(ReturnListOfStoredPrimeNumbers()[ReturnListOfStoredPrimeNumbers().Count() - 1]);
+                    AddToList(nextPrimeNumber);
+                    Console.WriteLine(nextPrimeNumber + " added as the next prime number\n");
+                }
+                else
+                {
+                    Console.WriteLine("No stored prime numbers to compare\n");
+                }
             }
             else if (input == "clear")
             {
-                return 4;
+                ClearList();
+                Console.WriteLine("Cleared the list of stored prime numbers\n");
             }
             else if (int.TryParse(input, out int result))
             {
-                return 5;
+                Console.WriteLine(PrimeNumberChecker.AddToList(result));
             }
             else
             {
-                return 6;
+                Console.WriteLine("\"" + input + "\" is not a proper command or a number\n");
             }
         }
 
