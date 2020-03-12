@@ -14,7 +14,7 @@ namespace PrimeNumberProgram
             Console.WriteLine("or \"clear\" to clear the list of prime numbers\n");
             while (PrimeNumberChecker.loopBoolean)
             {
-                var input = Console.ReadLine();
+                string input = Console.ReadLine();
                 PrimeNumberChecker.InputHandler(input);
             }
         }

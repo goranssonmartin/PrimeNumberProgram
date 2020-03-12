@@ -11,51 +11,57 @@ namespace PrimeNumberLibrary
 
         public static void InputHandler(string input)
         {
-            input = input.ToLower();
-            if (input == "stop")
+            if (input != null)
             {
-                loopBoolean = false;
-            }
-            else if (input == "print")
-            {
-                if (ReturnListOfStoredPrimeNumbers().Count > 0)
+                input = input.ToLower();
+                if (input == "stop")
                 {
-                    foreach (var storedNumbers in ReturnListOfStoredPrimeNumbers())
+                    loopBoolean = false;
+                }
+                else if (input == "print")
+                {
+                    if (ReturnListOfStoredPrimeNumbers().Count > 0)
                     {
-                        Console.WriteLine(storedNumbers);
+                        foreach (var storedNumbers in ReturnListOfStoredPrimeNumbers())
+                        {
+                            Console.WriteLine(storedNumbers);
+                        }
+                        Console.WriteLine("");
                     }
-                    Console.WriteLine("");
+                    else
+                    {
+                        Console.WriteLine("No stored numbers to print\n");
+                    }
+                }
+                else if (input == "next")
+                {
+                    if (ReturnListOfStoredPrimeNumbers().Count() > 0)
+                    {
+                        int nextPrimeNumber = FindNextPrimeNumber(ReturnListOfStoredPrimeNumbers()[ReturnListOfStoredPrimeNumbers().Count() - 1]);
+                        AddToList(nextPrimeNumber);
+                        Console.WriteLine(nextPrimeNumber + " added as the next prime number\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No stored prime numbers to compare\n");
+                    }
+                }
+                else if (input == "clear")
+                {
+                    ClearList();
+                    Console.WriteLine("Cleared the list of stored prime numbers\n");
+                }
+                else if (int.TryParse(input, out int result))
+                {
+                    Console.WriteLine(PrimeNumberChecker.AddToList(result));
                 }
                 else
                 {
-                    Console.WriteLine("No stored numbers to print\n");
+                    Console.WriteLine("\"" + input + "\" is not a proper command or a number\n");
                 }
             }
-            else if (input == "next")
-            {
-                if (ReturnListOfStoredPrimeNumbers().Count() > 0)
-                {
-                    int nextPrimeNumber = FindNextPrimeNumber(ReturnListOfStoredPrimeNumbers()[ReturnListOfStoredPrimeNumbers().Count() - 1]);
-                    AddToList(nextPrimeNumber);
-                    Console.WriteLine(nextPrimeNumber + " added as the next prime number\n");
-                }
-                else
-                {
-                    Console.WriteLine("No stored prime numbers to compare\n");
-                }
-            }
-            else if (input == "clear")
-            {
-                ClearList();
-                Console.WriteLine("Cleared the list of stored prime numbers\n");
-            }
-            else if (int.TryParse(input, out int result))
-            {
-                Console.WriteLine(PrimeNumberChecker.AddToList(result));
-            }
-            else
-            {
-                Console.WriteLine("\"" + input + "\" is not a proper command or a number\n");
+            else {
+                Console.WriteLine("The input value cannot be null");
             }
         }
 
