@@ -14,14 +14,16 @@ namespace PrimeNumberProgram
             Console.WriteLine("or \"clear\" to clear the list of prime numbers\n");
             while (loopBoolean)
             {
-                var input = Console.ReadLine();
-
-                if (PrimeNumberChecker.InputHandler(input) == 1)
+                string input = Console.ReadLine();
+                int inputReturnValue = PrimeNumberChecker.InputHandler(input);
+                //stop
+                if (inputReturnValue == 1)
                 {
                     loopBoolean = false;
                 }
 
-                else if (PrimeNumberChecker.InputHandler(input) == 2)
+                //print
+                else if (inputReturnValue == 2)
                 {
                     if (PrimeNumberChecker.ReturnListOfStoredPrimeNumbers().Count > 0)
                     {
@@ -36,8 +38,8 @@ namespace PrimeNumberProgram
                         Console.WriteLine("No stored numbers to print\n");
                     }
                 }
-
-                else if (PrimeNumberChecker.InputHandler(input) == 3)
+                //next 
+                else if (inputReturnValue == 3)
                 {
                     if (PrimeNumberChecker.ReturnListOfStoredPrimeNumbers().Count() > 0)
                     {
@@ -50,18 +52,23 @@ namespace PrimeNumberProgram
                         Console.WriteLine("No stored prime numbers to compare\n");
                     }
                 }
-
-                else if (PrimeNumberChecker.InputHandler(input) == 4)
+                //clear
+                else if (inputReturnValue == 4)
                 {
                     PrimeNumberChecker.ClearList();
                     Console.WriteLine("Cleared the list of stored prime numbers\n");
                 }
-
-                else if (PrimeNumberChecker.InputHandler(input) == 5)
+                //valid number
+                else if (inputReturnValue == 5)
                 {
                     Console.WriteLine(PrimeNumberChecker.AddToList(int.Parse(input)));
                 }
-
+                //null input
+                else if (inputReturnValue == 7)
+                {
+                    Console.WriteLine("Input cannot be null");
+                }
+                //invalid command or number
                 else
                 {
                     Console.WriteLine("\"" + input + "\" is not a proper command or a number\n");

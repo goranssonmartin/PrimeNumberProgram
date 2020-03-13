@@ -14,6 +14,7 @@ namespace PrimeNumberTesting
             Assert.AreEqual(3, PrimeNumberChecker.InputHandler("nEXt"));
             Assert.AreEqual(4, PrimeNumberChecker.InputHandler("clEAr"));
             Assert.AreEqual(5, PrimeNumberChecker.InputHandler("21"));
+            Assert.AreEqual(7, PrimeNumberChecker.InputHandler(null));
             Assert.AreEqual(6, PrimeNumberChecker.InputHandler("katt"));
         }
 
