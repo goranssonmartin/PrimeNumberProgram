@@ -7,55 +7,33 @@ namespace PrimeNumberLibrary
     public class PrimeNumberChecker
     {
         private static List<int> listOfPrimeNumbers = new List<int>();
-        public static bool loopBoolean = true;
 
-        public static void InputHandler(string input)
+        public static int InputHandler(string input)
         {
             input = input.ToLower();
             if (input == "stop")
             {
-                loopBoolean = false;
+                return 1;
             }
             else if (input == "print")
             {
-                if (ReturnListOfStoredPrimeNumbers().Count > 0)
-                {
-                    foreach (var storedNumbers in ReturnListOfStoredPrimeNumbers())
-                    {
-                        Console.WriteLine(storedNumbers);
-                    }
-                    Console.WriteLine("");
-                }
-                else
-                {
-                    Console.WriteLine("No stored numbers to print\n");
-                }
+                return 2;
             }
             else if (input == "next")
             {
-                if (ReturnListOfStoredPrimeNumbers().Count() > 0)
-                {
-                    int nextPrimeNumber = FindNextPrimeNumber(ReturnListOfStoredPrimeNumbers()[ReturnListOfStoredPrimeNumbers().Count() - 1]);
-                    AddToList(nextPrimeNumber);
-                    Console.WriteLine(nextPrimeNumber + " added as the next prime number\n");
-                }
-                else
-                {
-                    Console.WriteLine("No stored prime numbers to compare\n");
-                }
+                return 3;
             }
             else if (input == "clear")
             {
-                ClearList();
-                Console.WriteLine("Cleared the list of stored prime numbers\n");
+                return 4;
             }
             else if (int.TryParse(input, out int result))
             {
-                Console.WriteLine(PrimeNumberChecker.AddToList(result));
+                return 5;
             }
             else
             {
-                Console.WriteLine("\"" + input + "\" is not a proper command or a number\n");
+                return 6;
             }
         }
 

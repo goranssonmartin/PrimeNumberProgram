@@ -8,6 +8,16 @@ namespace PrimeNumberTesting
     public class Tests
     {
         [Test]
+        public void Test_IfDifferenetInputsReturnsTheExpectedValues() {
+            Assert.AreEqual(1, PrimeNumberChecker.InputHandler("StoP"));
+            Assert.AreEqual(2, PrimeNumberChecker.InputHandler("priNT"));
+            Assert.AreEqual(3, PrimeNumberChecker.InputHandler("nEXt"));
+            Assert.AreEqual(4, PrimeNumberChecker.InputHandler("clEAr"));
+            Assert.AreEqual(5, PrimeNumberChecker.InputHandler("21"));
+            Assert.AreEqual(6, PrimeNumberChecker.InputHandler("katt"));
+        }
+
+        [Test]
         public void Test_IfPrimeNumberReturnsCorrectValue()
         {
             Assert.AreEqual(true, PrimeNumberChecker.inputNumberHandler(2));
