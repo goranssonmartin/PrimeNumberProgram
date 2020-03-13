@@ -27,6 +27,7 @@ namespace PrimeNumberTesting
             Assert.AreEqual(false, PrimeNumberChecker.inputNumberHandler(1234567));
             Assert.AreEqual(false, PrimeNumberChecker.inputNumberHandler(4));
             Assert.AreEqual(false, PrimeNumberChecker.inputNumberHandler(21));
+            Assert.AreEqual(false, PrimeNumberChecker.inputNumberHandler(-21));
         }
 
         [Test]
