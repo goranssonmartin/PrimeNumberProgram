@@ -7,45 +7,66 @@ namespace PrimeNumberLibrary
     public class PrimeNumberChecker
     {
         private static List<int> listOfPrimeNumbers = new List<int>();
+        public static bool loopBoolean = true;
 
-        //Takes an input from the console, checks if it's null or not, returns 7 if null and returns
-        //1 if input is "stop", 2 if input is "print", 3 if input is "next", 4 if input is "clear",
-        //5 if input is a valid integer or 6 if the input is an invalid command or not a valid integer
-        public static int InputHandler(string input)
+        //Takes an input from the console, checks if it's null or not, returns a message related to each input
+        public static string InputHandler(string input)
         {
             if (input != null)
             {
                 input = input.ToLower();
                 if (input == "stop")
                 {
-                    return 1;
+                    loopBoolean = false;
+                    return "Program stopped";
                 }
                 else if (input == "print")
                 {
-                    return 2;
+                    if (ReturnListOfStoredPrimeNumbers().Count > 0)
+                    {
+                        foreach (var storedNumbers in ReturnListOfStoredPrimeNumbers())
+                        {
+                            return storedNumbers.ToString();
+                        }
+                        return "\n";
+                    }
+                    else
+                    {
+                        return "No stored numbers to print\n";
+                    }
                 }
                 else if (input == "next")
                 {
-                    return 3;
+                    if (ReturnListOfStoredPrimeNumbers().Count() > 0)
+                    {
+                        int nextPrimeNumber = FindNextPrimeNumber(ReturnListOfStoredPrimeNumbers()[ReturnListOfStoredPrimeNumbers().Count() - 1]);
+                        AddToList(nextPrimeNumber);
+                        return nextPrimeNumber + " added as the next prime number\n";
+                    }
+                    else
+                    {
+                        return "No stored prime numbers to compare\n";
+                    }
                 }
                 else if (input == "clear")
                 {
-                    return 4;
+                    ClearList();
+                    return "Cleared the list of stored prime numbers\n";
                 }
                 //Tries to parse the input, if the result is true then it's a valid number
-                // and the program returns the value that indicates that it's a valid number
+                // and the program returns the value based on if it's a prime number or not
                 else if (int.TryParse(input, out int result))
                 {
-                    return 5;
+                    return AddToList(result);
                 }
                 else
                 {
-                    return 6;
+                    return "\"" + input + "\" is not a proper command or a number\n";
                 }
             }
             else
             {
-                return 7;
+                return "Input cannot be null";
             }
         }
 

@@ -9,13 +9,13 @@ namespace PrimeNumberTesting
     {
         [Test]
         public void Test_IfDifferenetInputsReturnsTheExpectedValues() {
-            Assert.AreEqual(1, PrimeNumberChecker.InputHandler("StoP"));
-            Assert.AreEqual(2, PrimeNumberChecker.InputHandler("priNT"));
-            Assert.AreEqual(3, PrimeNumberChecker.InputHandler("nEXt"));
-            Assert.AreEqual(4, PrimeNumberChecker.InputHandler("clEAr"));
-            Assert.AreEqual(5, PrimeNumberChecker.InputHandler("21"));
-            Assert.AreEqual(7, PrimeNumberChecker.InputHandler(null));
-            Assert.AreEqual(6, PrimeNumberChecker.InputHandler("katt"));
+            Assert.AreEqual("Program stopped", PrimeNumberChecker.InputHandler("StoP"));
+            Assert.AreEqual("No stored numbers to print\n", PrimeNumberChecker.InputHandler("priNT"));
+            Assert.AreEqual("No stored prime numbers to compare\n", PrimeNumberChecker.InputHandler("nEXt"));
+            Assert.AreEqual("Cleared the list of stored prime numbers\n", PrimeNumberChecker.InputHandler("clEAr"));
+            Assert.AreEqual("21 is not a prime number\n", PrimeNumberChecker.InputHandler("21"));
+            Assert.AreEqual("Input cannot be null", PrimeNumberChecker.InputHandler(null));
+            Assert.AreEqual("\"katt\" is not a proper command or a number\n", PrimeNumberChecker.InputHandler("katt"));
         }
 
         [Test]
