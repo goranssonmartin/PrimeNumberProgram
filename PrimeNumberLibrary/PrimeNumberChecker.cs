@@ -10,23 +10,23 @@ namespace PrimeNumberLibrary
         public static bool loopBoolean = true;
 
         //Takes an input from the console, checks if it's null or not, returns a message related to each input
-        public static string InputHandler(string input)
+        public static string InputHandler(string userInputFromConsole)
         {
-            if (input != null)
+            if (userInputFromConsole != null)
             {
-                input = input.ToLower();
-                if (input == "stop")
+                userInputFromConsole = userInputFromConsole.ToLower();
+                if (userInputFromConsole == "stop")
                 {
                     loopBoolean = false;
                     return "Program stopped";
                 }
-                else if (input == "print")
+                else if (userInputFromConsole == "print")
                 {
                     if (ReturnListOfStoredPrimeNumbers().Count > 0)
                     {
                         foreach (var storedNumbers in ReturnListOfStoredPrimeNumbers())
                         {
-                            return storedNumbers.ToString();
+                            Console.WriteLine(storedNumbers);
                         }
                         return "\n";
                     }
@@ -35,7 +35,7 @@ namespace PrimeNumberLibrary
                         return "No stored numbers to print\n";
                     }
                 }
-                else if (input == "next")
+                else if (userInputFromConsole == "next")
                 {
                     if (ReturnListOfStoredPrimeNumbers().Count() > 0)
                     {
@@ -48,20 +48,20 @@ namespace PrimeNumberLibrary
                         return "No stored prime numbers to compare\n";
                     }
                 }
-                else if (input == "clear")
+                else if (userInputFromConsole == "clear")
                 {
                     ClearList();
                     return "Cleared the list of stored prime numbers\n";
                 }
                 //Tries to parse the input, if the result is true then it's a valid number
                 // and the program returns the value based on if it's a prime number or not
-                else if (int.TryParse(input, out int result))
+                else if (int.TryParse(userInputFromConsole, out int result))
                 {
                     return AddToList(result);
                 }
                 else
                 {
-                    return "\"" + input + "\" is not a proper command or a number\n";
+                    return "\"" + userInputFromConsole + "\" is not a proper command or a number\n";
                 }
             }
             else
@@ -72,7 +72,7 @@ namespace PrimeNumberLibrary
 
         //takes an integer and returns true or false based on if it's a prime number or not
         //https://stackoverflow.com/questions/15743192/check-if-number-is-prime-number/15743238
-        public static bool inputNumberHandler(int inputNumber)
+        public static bool InputNumberHandler(int inputNumber)
         {
             if (inputNumber <= 1)
             {
@@ -97,13 +97,13 @@ namespace PrimeNumberLibrary
             return true;
         }
 
-        //takes a potential number to check, if the number isn't already stored and if it's a primer number it is added to the list,
+        //takes a potential number to check, if the number isn't already stored and if it's a prime number it is added to the list,
         //if the number is already in the the list it returns a string that indicates that it is already stored
         //and if it's not a prime number it returns this information to the user
         public static string AddToList(int potentialPrimeNumber)
         {
             bool ifListContainsNumber = listOfPrimeNumbers.Contains(potentialPrimeNumber);
-            bool ifNumberIsAPrimeNumber = inputNumberHandler(potentialPrimeNumber);
+            bool ifNumberIsAPrimeNumber = InputNumberHandler(potentialPrimeNumber);
             if (!ifListContainsNumber && ifNumberIsAPrimeNumber)
             {
                 listOfPrimeNumbers.Add(potentialPrimeNumber);
@@ -152,11 +152,11 @@ namespace PrimeNumberLibrary
         }
         //takes the highest value in the list, increments it by 1, checks if it's a prime number.
         //if it is a prime number it returns this number so it can be stored in the list,
-        // else it returns the same method with the incremented value until a prime number is found
+        //else it returns the same method with the incremented value until a prime number is found
         public static int FindNextPrimeNumber(int highestStoredNumber)
         {
             highestStoredNumber++;
-            if (inputNumberHandler(highestStoredNumber))
+            if (InputNumberHandler(highestStoredNumber))
             {
                 return highestStoredNumber;
             }

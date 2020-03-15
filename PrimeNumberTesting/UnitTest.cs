@@ -21,13 +21,13 @@ namespace PrimeNumberTesting
         [Test]
         public void Test_IfPrimeNumberReturnsCorrectValue()
         {
-            Assert.AreEqual(true, PrimeNumberChecker.inputNumberHandler(2));
-            Assert.AreEqual(true, PrimeNumberChecker.inputNumberHandler(5));
-            Assert.AreEqual(true, PrimeNumberChecker.inputNumberHandler(11));
-            Assert.AreEqual(false, PrimeNumberChecker.inputNumberHandler(1234567));
-            Assert.AreEqual(false, PrimeNumberChecker.inputNumberHandler(4));
-            Assert.AreEqual(false, PrimeNumberChecker.inputNumberHandler(21));
-            Assert.AreEqual(false, PrimeNumberChecker.inputNumberHandler(-21));
+            Assert.AreEqual(true, PrimeNumberChecker.InputNumberHandler(2));
+            Assert.AreEqual(true, PrimeNumberChecker.InputNumberHandler(5));
+            Assert.AreEqual(true, PrimeNumberChecker.InputNumberHandler(11));
+            Assert.AreEqual(false, PrimeNumberChecker.InputNumberHandler(1234567));
+            Assert.AreEqual(false, PrimeNumberChecker.InputNumberHandler(4));
+            Assert.AreEqual(false, PrimeNumberChecker.InputNumberHandler(21));
+            Assert.AreEqual(false, PrimeNumberChecker.InputNumberHandler(-21));
         }
 
         [Test]
@@ -83,6 +83,8 @@ namespace PrimeNumberTesting
         public void Test_IfNextIsWorkingAsIntended()
         {
             PrimeNumberChecker.AddToList(11);
+            PrimeNumberChecker.AddToList(7);
+            PrimeNumberChecker.AddToList(2);
             int highestStoredValue = PrimeNumberChecker.ReturnListOfStoredPrimeNumbers()[PrimeNumberChecker.ReturnListOfStoredPrimeNumbers().Count() - 1];
             Assert.AreEqual(13, PrimeNumberChecker.FindNextPrimeNumber(highestStoredValue));
         }
